@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Solicitação de Novo RJ - Radix</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #4a148c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .form-title {
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+        
+        .section-header {
+            background: #7b1fa2;
+            color: white;
+            padding: 12px 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .section-header:first-of-type {
+            margin-top: 0;
+        }
+        
+        .form-content {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-value {
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            min-height: 40px;
+            color: #333;
+        }
+        
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .selected-option {
+            background: #7b1fa2;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .warning-box p {
+            color: #e65100;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .status-section {
+            background: #e8f5e9;
+            padding: 20px;
+            text-align: center;
+            border-top: 2px solid #4caf50;
+        }
+        
+        .status-badge {
+            background: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .footer-note {
+            text-align: center;
+            padding: 15px;
+            background: #f5f5f5;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .meta-info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .meta-info p {
+            margin: 5px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .checkbox-group,
+            .radio-group {
+                flex-direction: column;
+            }
+            
+            .logo {
+                font-size: 2em;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">RADIX</div>
+            <div class="form-title">Formulário de Solicitação de novo RJ - Preenchido</div>
+        </div>
+        
+        <div class="meta-info">
+            <p><strong>Número da Solicitação:</strong> RJ-20250825-3618</p>
+            <p><strong>Data de Preenchimento:</strong> 25/08/2025 as 18:53</p>
+            <p><strong>Status:</strong> PENDENTE DE APROVACAO</p>
+        </div>
+        
+        <div class="section-header">INFORMAÇÕES GERAIS</div>
+        
+        <div class="form-content">
+            <div class="form-group">
+                <label>DATA DA SOLICITAÇÃO:</label>
+                <div class="form-value">2025-08-26</div>
+            </div>
+            
+            <div class="form-group">
+                <label>SOLICITANTE:</label>
+                <div class="form-value">Felipe</div>
+            </div>
+            
+            <div class="form-group">
+                <label>GESTOR IMEDIATO:</label>
+                <div class="form-value">testen8n</div>
+            </div>
+            
+            <div class="form-group">
+                <label>PROJETO:</label>
+                <div class="form-value">testen8n</div>
+            </div>
+        </div>
+        
+        <div class="section-header">QUESTÕES TRABALHISTAS</div>
+        
+        <div class="form-content">
+            <div class="form-group">
+                <label>A área de atuação da empresa é "core" da Radix?</label>
+                <div class="form-value">
+                    <span class="selected-option">NAO - Nao e area core</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Trata-se de uma empresa com vários funcionários ou o eleito é o único?</label>
+                <div class="form-value">
+                    <span class="selected-option">VARIOS FUNCIONARIOS</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>O prestador atende a vários clientes e continuará atendendo simultaneamente?</label>
+                <div class="form-value">
+                    <span class="selected-option">VARIOS CLIENTES SIMULTANEAMENTE</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>A prestação de serviços será realizada apenas por um único consultor?</label>
+                <div class="form-value">
+                    <span class="selected-option">VARIOS CONSULTORES</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>O prestador de serviços ficará alocado no escritório da Radix ou no cliente?</label>
+                <div class="form-value">
+                    <span class="selected-option">ALOCADO NO CLIENTE RADIX</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Tipo de Contrato e Detalhes:</label>
+                <div class="form-value">
+                    <p><strong>Tipo:</strong> CONTRATO POR ESCOPO</p>
+                    <p><strong>Detalhes:</strong> testen8n</p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>O prestador deverá emitir carga horária pré-definida?</label>
+                <div class="form-value">
+                    <span class="selected-option">SIM - Carga horaria pre-definida</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>O prestador terá fornecimento de recursos da Radix?</label>
+                <div class="form-value">
+                    <p><strong>Fornecimento:</strong> SIM - Tera recursos Radix</p>
+                    <p><strong>Descrição:</strong> testen8n</p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>O prestador deverá responder à gestão Radix (subordinação)?</label>
+                <div class="form-value">
+                    <span class="selected-option">SIM - Responde a gestao Radix</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>PRODUTO/SERVIÇO SOLICITADO:</label>
+                <div class="form-value" style="white-space: pre-wrap;">testen8n</div>
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            <p>⚠️ INFORMAÇÕES VALIDADAS:</p>
+            Este formulário foi preenchido automaticamente via sistema n8n com as informações fornecidas pelo solicitante.
+        </div>
+        
+        <div class="section-header">PARECER DA DIRETORIA</div>
+        
+        <div class="form-content">
+            <div class="form-group">
+                <label for="parecer-diretor">Comentários e Observações do Diretor:</label>
+                <textarea id="parecer-diretor" name="parecer-diretor" rows="6" 
+                    placeholder="Digite aqui suas observações sobre esta solicitação..." 
+                    style="width: 100%; padding: 10px; border: 2px solid #e0e0e0; border-radius: 5px; font-size: 14px; font-family: Arial, sans-serif;"></textarea>
+            </div>
+        </div>
+        
+        <div class="approval-section" style="background: #f5f5f5; padding: 30px; text-align: center;">
+            <p style="margin-bottom: 20px; color: #666; font-weight: bold;">
+                DECISÃO SOBRE A SOLICITAÇÃO
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <button type="button" id="btn-aprovar" class="approval-btn approve-btn" 
+                    style="background: #4caf50; color: white; border: none; padding: 15px 40px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: all 0.3s; min-width: 200px;">
+                    ✓ APROVAR SOLICITAÇÃO
+                </button>
+                <button type="button" id="btn-reprovar" class="approval-btn reject-btn"
+                    style="background: #f44336; color: white; border: none; padding: 15px 40px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: all 0.3s; min-width: 200px;">
+                    ✗ NÃO APROVAR
+                </button>
+            </div>
+            <div id="status-message" style="margin-top: 20px; padding: 15px; border-radius: 5px; display: none;"></div>
+        </div>
+        
+        <div class="footer-note">
+            © 2024 Radix - Formulário de Solicitação de RJ | Documento gerado automaticamente via n8n<br>
+            ID do Processo: PROC-1756147995839-QKLTY1S6E
+        </div>
+    </div>
+    
+    <script>
+        // Coletar todos os dados do formulário
+        function coletarDadosFormulario() {
+            return {
+                // Metadados
+                numeroSolicitacao: 'RJ-20250825-3618',
+                processId: 'PROC-1756147995839-QKLTY1S6E',
+                dataPreenchimento: '25/08/2025 as 18:53',
+                statusSolicitacao: 'PENDENTE DE APROVACAO',
+                
+                // Informações Gerais
+                dataSolicitacao: '2025-08-26',
+                solicitante: 'Felipe',
+                gestorImediato: 'testen8n',
+                projeto: 'testen8n',
+                
+                // Questões Trabalhistas
+                areaCore: 'NAO - Nao e area core',
+                variosFuncionarios: 'VARIOS FUNCIONARIOS',
+                tipoConsultor: 'VARIOS CLIENTES SIMULTANEAMENTE',
+                pessoalidade: 'VARIOS CONSULTORES',
+                alocacao: 'ALOCADO NO CLIENTE RADIX',
+                tipoContrato: 'CONTRATO POR ESCOPO',
+                detalhesContrato: 'testen8n',
+                cargaHoraria: 'SIM - Carga horaria pre-definida',
+                fornecimento: 'SIM - Tera recursos Radix',
+                descricaoFornecimento: 'testen8n',
+                subordinacao: 'SIM - Responde a gestao Radix',
+                produtoServico: 'testen8n',
+                
+                // Parecer do Diretor
+                parecerDiretor: document.getElementById('parecer-diretor').value,
+                
+                // Data e hora da decisão
+                dataDecisao: new Date().toISOString(),
+                timestampDecisao: Date.now()
+            };
+        }
+        
+        // Função para enviar dados ao webhook
+        async function enviarDecisao(decisao) {
+            const statusDiv = document.getElementById('status-message');
+            const btns = document.querySelectorAll('.approval-btn');
+            
+            // Desabilitar botões durante envio
+            btns.forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.5';
+                btn.style.cursor = 'not-allowed';
+            });
+            
+            // Mostrar mensagem de enviando
+            statusDiv.style.display = 'block';
+            statusDiv.style.background = '#fff3e0';
+            statusDiv.style.color = '#ff9800';
+            statusDiv.innerHTML = '⏳ Enviando decisão...';
+            
+            try {
+                const dados = coletarDadosFormulario();
+                dados.decisao = decisao;
+                dados.aprovado = (decisao === 'APROVADO');
+                
+                // Validar campo de comentários
+                if (!dados.parecerDiretor || dados.parecerDiretor.trim() === '') {
+                    throw new Error('Por favor, adicione comentários antes de enviar a decisão.');
+                }
+                
+                // Enviar para o webhook
+                const response = await fetch('https://radixie.radixeng.com.br/webhook/formpj', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                if (response.ok) {
+                    // Sucesso
+                    statusDiv.style.background = '#e8f5e9';
+                    statusDiv.style.color = '#2e7d32';
+                    statusDiv.innerHTML = `✅ <strong>Decisão enviada com sucesso!</strong><br>
+                        Status: ${decisao}<br>
+                        Protocolo: ${dados.processId}<br>
+                        <small>Você pode fechar esta janela.</small>`;
+                    
+                    // Manter botões desabilitados após sucesso
+                    btns.forEach(btn => {
+                        btn.style.display = 'none';
+                    });
+                    
+                    // Log no console para debug
+                    console.log('Dados enviados:', dados);
+                    
+                } else {
+                    throw new Error(`Erro no servidor: ${response.status}`);
+                }
+                
+            } catch (erro) {
+                // Erro
+                statusDiv.style.background = '#ffebee';
+                statusDiv.style.color = '#c62828';
+                statusDiv.innerHTML = `❌ <strong>Erro ao enviar decisão:</strong><br>${erro.message}<br>
+                    <small>Por favor, tente novamente ou entre em contato com o suporte.</small>`;
+                
+                // Reabilitar botões em caso de erro
+                btns.forEach(btn => {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                });
+                
+                console.error('Erro ao enviar:', erro);
+            }
+        }
+        
+        // Event listeners para os botões
+        document.getElementById('btn-aprovar').addEventListener('click', function() {
+            if (confirm('Tem certeza que deseja APROVAR esta solicitação?')) {
+                enviarDecisao('APROVADO');
+            }
+        });
+        
+        document.getElementById('btn-reprovar').addEventListener('click', function() {
+            if (confirm('Tem certeza que deseja NÃO APROVAR esta solicitação?')) {
+                enviarDecisao('NAO_APROVADO');
+            }
+        });
+        
+        // Adicionar efeitos hover aos botões
+        document.getElementById('btn-aprovar').addEventListener('mouseenter', function() {
+            if (!this.disabled) {
+                this.style.background = '#45a049';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.4)';
+            }
+        });
+        
+        document.getElementById('btn-aprovar').addEventListener('mouseleave', function() {
+            if (!this.disabled) {
+                this.style.background = '#4caf50';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+        
+        document.getElementById('btn-reprovar').addEventListener('mouseenter', function() {
+            if (!this.disabled) {
+                this.style.background = '#da190b';
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 6px 20px rgba(244, 67, 54, 0.4)';
+            }
+        });
+        
+        document.getElementById('btn-reprovar').addEventListener('mouseleave', function() {
+            if (!this.disabled) {
+                this.style.background = '#f44336';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+        
+        // Auto-save do campo de comentários no localStorage
+        const parecerField = document.getElementById('parecer-diretor');
+        const processId = 'PROC-1756147995839-QKLTY1S6E';
+        
+        // Recuperar texto salvo se existir
+        const savedText = localStorage.getItem(`parecer_${processId}`);
+        if (savedText && !parecerField.value) {
+            parecerField.value = savedText;
+        }
+        
+        // Salvar automaticamente enquanto digita
+        parecerField.addEventListener('input', function() {
+            localStorage.setItem(`parecer_${processId}`, this.value);
+        });
+        
+        // Limpar localStorage após envio bem-sucedido
+        window.addEventListener('beforeunload', function() {
+            const statusDiv = document.getElementById('status-message');
+            if (statusDiv.innerHTML.includes('sucesso')) {
+                localStorage.removeItem(`parecer_${processId}`);
+            }
+        });
+    </script>
+</body>
+</html>
