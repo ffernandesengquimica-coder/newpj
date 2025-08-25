@@ -74,83 +74,31 @@
             color: #333;
         }
         
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
+        .form-value {
             padding: 10px;
+            background: #f5f5f5;
             border: 2px solid #e0e0e0;
             border-radius: 5px;
-            font-size: 14px;
-            transition: border-color 0.3s;
+            min-height: 40px;
+            color: #333;
         }
         
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #7b1fa2;
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        
-        .checkbox-group {
+        .checkbox-group, .radio-group {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             margin-top: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 5px;
         }
         
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-        }
-        
-        .checkbox-item input[type="checkbox"] {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        
-        .checkbox-item label {
-            cursor: pointer;
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-        
-        .radio-group {
-            display: flex;
-            gap: 30px;
-            margin-top: 10px;
-        }
-        
-        .radio-item {
-            display: flex;
-            align-items: center;
-        }
-        
-        .radio-item input[type="radio"] {
-            margin-right: 8px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        
-        .radio-item label {
-            cursor: pointer;
-            margin-bottom: 0;
-            font-weight: normal;
-        }
-        
-        .inline-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        .selected-option {
+            background: #7b1fa2;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
         }
         
         .warning-box {
@@ -167,30 +115,21 @@
             margin-bottom: 10px;
         }
         
-        .submit-section {
-            background: #f5f5f5;
+        .status-section {
+            background: #e8f5e9;
             padding: 20px;
             text-align: center;
-            border-top: 2px solid #e0e0e0;
+            border-top: 2px solid #4caf50;
         }
         
-        .submit-btn {
+        .status-badge {
             background: #4caf50;
             color: white;
-            border: none;
-            padding: 15px 40px;
+            padding: 10px 20px;
             font-size: 16px;
             font-weight: bold;
             border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
-        }
-        
-        .submit-btn:hover {
-            background: #45a049;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            display: inline-block;
         }
         
         .footer-note {
@@ -201,11 +140,19 @@
             font-size: 12px;
         }
         
+        .meta-info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .meta-info p {
+            margin: 5px 0;
+        }
+        
         @media (max-width: 600px) {
-            .inline-fields {
-                grid-template-columns: 1fr;
-            }
-            
             .checkbox-group,
             .radio-group {
                 flex-direction: column;
@@ -215,36 +162,52 @@
                 font-size: 2em;
             }
         }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo">RADIX</div>
-            <div class="form-title">Formulário de Solicitação de novo RJ</div>
+            <div class="form-title">Formulário de Solicitação de novo RJ - Preenchido</div>
+        </div>
+        
+        <div class="meta-info">
+            <p><strong>Número da Solicitação:</strong> {{numeroSolicitacao}}</p>
+            <p><strong>Data de Preenchimento:</strong> {{dataPreenchimento}}</p>
+            <p><strong>Status:</strong> {{statusSolicitacao}}</p>
         </div>
         
         <div class="section-header">INFORMAÇÕES GERAIS</div>
         
         <div class="form-content">
             <div class="form-group">
-                <label for="data-solicitacao">DATA DA SOLICITAÇÃO: *</label>
-                <input type="date" id="data-solicitacao" name="data-solicitacao" required>
+                <label>DATA DA SOLICITAÇÃO:</label>
+                <div class="form-value">{{dataSolicitacao}}</div>
             </div>
             
             <div class="form-group">
-                <label for="solicitante">SOLICITANTE: *</label>
-                <input type="text" id="solicitante" name="solicitante" required placeholder="Nome completo do solicitante">
+                <label>SOLICITANTE:</label>
+                <div class="form-value">{{solicitante}}</div>
             </div>
             
             <div class="form-group">
-                <label for="gestor">GESTOR IMEDIATO: *</label>
-                <input type="text" id="gestor" name="gestor" required placeholder="Nome do gestor imediato">
+                <label>GESTOR IMEDIATO:</label>
+                <div class="form-value">{{gestorImediato}}</div>
             </div>
             
             <div class="form-group">
-                <label for="projeto">PROJETO: *</label>
-                <input type="text" id="projeto" name="projeto" required placeholder="Nome do projeto">
+                <label>PROJETO:</label>
+                <div class="form-value">{{projeto}}</div>
             </div>
         </div>
         
@@ -252,188 +215,92 @@
         
         <div class="form-content">
             <div class="form-group">
-                <label>A área de atuação da empresa é "core" da Radix, ou seja, homocentro/profissionais CLT prestando o mesmo tipo de serviço da empresa?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="core-sim" name="area-core" value="sim">
-                        <label for="core-sim">SIM</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="core-nao" name="area-core" value="nao">
-                        <label for="core-nao">NÃO</label>
-                    </div>
+                <label>A área de atuação da empresa é "core" da Radix?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{areaCore}}</span>
                 </div>
             </div>
             
             <div class="form-group">
                 <label>Trata-se de uma empresa com vários funcionários ou o eleito é o único?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="varios-sim" name="varios-funcionarios" value="sim">
-                        <label for="varios-sim">VÁRIOS CLIENTES</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="varios-nao" name="varios-funcionarios" value="nao">
-                        <label for="varios-nao">ÚNICO CLIENTE POR VEZ / RADIX</label>
-                    </div>
+                <div class="form-value">
+                    <span class="selected-option">{{variosFuncionarios}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O prestador atende a vários clientes e continuará atendendo simultaneamente? Ou apenas à Radix?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="unico-consultor" name="consultor-tipo" value="unico">
-                        <label for="unico-consultor">ÚNICO CONSULTOR</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="outros-consultores" name="consultor-tipo" value="outros">
-                        <label for="outros-consultores">PODE SER REALIZADO POR OUTROS DA EMPRESA</label>
-                    </div>
+                <label>O prestador atende a vários clientes e continuará atendendo simultaneamente?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{tipoConsultor}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>A prestação de serviços à Radix será realizada apenas por um único consultor, ou por vários (ref: pessoalidade)?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="pessoalidade-sim" name="pessoalidade" value="sim">
-                        <label for="pessoalidade-sim">SIM</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="pessoalidade-nao" name="pessoalidade" value="nao">
-                        <label for="pessoalidade-nao">NÃO</label>
-                    </div>
+                <label>A prestação de serviços será realizada apenas por um único consultor?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{pessoalidade}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O prestador de serviços ficará alocado no escritório da Radix ou no cliente Radix? Ou está contratado apenas com base no resultado de projeto? (sim = cliente Radix, não = base resultado)</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="alocado-sim" name="alocado" value="sim">
-                        <label for="alocado-sim">ALOCADO NO CLIENTE RADIX</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="alocado-nao" name="alocado" value="nao">
-                        <label for="alocado-nao">PRESTADOR NÃO FICARÁ ALOCADO</label>
-                    </div>
+                <label>O prestador de serviços ficará alocado no escritório da Radix ou no cliente?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{alocacao}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O serviço contratado será por HH ou por escopo definido? Qual o valor de HH? Qual o valor de contrato? Se for por HH, qual a expectativa de horas de contrato?</label>
-                <div class="checkbox-group">
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="contrato-hh" name="tipo-contrato" value="hh">
-                        <label for="contrato-hh">CONTRATO POR HH</label>
-                    </div>
-                    <div class="checkbox-item">
-                        <input type="checkbox" id="contrato-escopo" name="tipo-contrato" value="escopo">
-                        <label for="contrato-escopo">CONTRATO POR ESCOPO</label>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <input type="text" name="detalhes-contrato" placeholder="Detalhe o prazo do contrato e a previsão de atuação se será variável, sendo por HH">
+                <label>Tipo de Contrato e Detalhes:</label>
+                <div class="form-value">
+                    <p><strong>Tipo:</strong> {{tipoContrato}}</p>
+                    <p><strong>Detalhes:</strong> {{detalhesContrato}}</p>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O prestador deverá emitir carga horária pré-definida, ainda que a mesma não seja efetivamente realizada (ou seja, demanda)?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="carga-sim" name="carga-horaria" value="sim">
-                        <label for="carga-sim">SIM</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="carga-nao" name="carga-horaria" value="nao">
-                        <label for="carga-nao">NÃO</label>
-                    </div>
+                <label>O prestador deverá emitir carga horária pré-definida?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{cargaHoraria}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O prestador terá fornecimento de: trabalho Radix, como computador, crachá, e-mail Radix, dentre outros? Descreva:</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="fornecimento-sim" name="fornecimento" value="sim">
-                        <label for="fornecimento-sim">SIM</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="fornecimento-nao" name="fornecimento" value="nao">
-                        <label for="fornecimento-nao">NÃO</label>
-                    </div>
-                </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <textarea name="descricao-fornecimento" placeholder="Descreva os recursos fornecidos..."></textarea>
+                <label>O prestador terá fornecimento de recursos da Radix?</label>
+                <div class="form-value">
+                    <p><strong>Fornecimento:</strong> {{fornecimento}}</p>
+                    <p><strong>Descrição:</strong> {{descricaoFornecimento}}</p>
                 </div>
             </div>
             
             <div class="form-group">
-                <label>O prestador deverá responder à gestão Radix (ref: subordinação)?</label>
-                <div class="radio-group">
-                    <div class="radio-item">
-                        <input type="radio" id="subordinacao-sim" name="subordinacao" value="sim">
-                        <label for="subordinacao-sim">SIM</label>
-                    </div>
-                    <div class="radio-item">
-                        <input type="radio" id="subordinacao-nao" name="subordinacao" value="nao">
-                        <label for="subordinacao-nao">NÃO</label>
-                    </div>
+                <label>O prestador deverá responder à gestão Radix (subordinação)?</label>
+                <div class="form-value">
+                    <span class="selected-option">{{subordinacao}}</span>
                 </div>
             </div>
             
             <div class="form-group">
-                <label for="produto-servico">PRODUTO/SERVIÇO SOLICITADO, favor detalhar:</label>
-                <textarea id="produto-servico" name="produto-servico" rows="4" placeholder="Descreva detalhadamente o produto ou serviço solicitado..."></textarea>
+                <label>PRODUTO/SERVIÇO SOLICITADO:</label>
+                <div class="form-value" style="white-space: pre-wrap;">{{produtoServico}}</div>
             </div>
         </div>
         
         <div class="warning-box">
-            <p>⚠️ ATENÇÃO:</p>
-            As informações acima são de extrema criticidade para a Radix, o solicitante deverá se comprometer com as informações fornecidas.
+            <p>⚠️ INFORMAÇÕES VALIDADAS:</p>
+            Este formulário foi preenchido automaticamente via sistema n8n com as informações fornecidas pelo solicitante.
         </div>
         
-        <div class="submit-section">
-            <p style="margin-bottom: 20px; color: #666;">
-                APÓS ENVIO DO FORMULÁRIO DE SOLICITAÇÃO PARA O SETOR DE SUPRIMENTOS, O MESMO PASSARÁ PELA APROVAÇÃO DA DIRETORIA E DO JURÍDICO TRABALHISTA.
+        <div class="status-section">
+            <div class="status-badge">AGUARDANDO APROVAÇÃO</div>
+            <p style="margin-top: 15px; color: #666;">
+                Este formulário está aguardando aprovação da Diretoria e do Jurídico Trabalhista.
             </p>
-            <button type="submit" class="submit-btn">ENVIAR SOLICITAÇÃO</button>
         </div>
         
         <div class="footer-note">
-            © 2024 Radix - Formulário de Solicitação de RJ | Todos os direitos reservados
+            © 2024 Radix - Formulário de Solicitação de RJ | Documento gerado automaticamente via n8n<br>
+            ID do Processo: {{processId}}
         </div>
     </div>
-    
-    <script>
-        // Adicionar validação e interatividade
-        document.querySelector('.submit-btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Validar campos obrigatórios
-            const requiredFields = document.querySelectorAll('[required]');
-            let isValid = true;
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = '#f44336';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#e0e0e0';
-                }
-            });
-            
-            if (isValid) {
-                alert('Formulário enviado com sucesso! Aguarde a aprovação da Diretoria e do Jurídico Trabalhista.');
-                // Aqui você pode adicionar o código para enviar o formulário
-            } else {
-                alert('Por favor, preencha todos os campos obrigatórios marcados com *');
-            }
-        });
-        
-        // Adicionar data atual automaticamente
-        document.getElementById('data-solicitacao').valueAsDate = new Date();
-    </script>
 </body>
 </html>
